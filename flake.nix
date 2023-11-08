@@ -10,9 +10,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
-
     nur.url = "github:nix-community/nur";
     nur.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -84,11 +81,7 @@
         vm-dev = { };
       };
 
-      darwinConfigurations = mapAttrs' mkDarwin {
-        theman = { user = "work"; };
-      };
-
-      # Convenience output that aggregates the outputs for home, nixos, and darwin configurations.
+      # Convenience output that aggregates the outputs for home and nixos configurations.
       # Also used in ci to build targets generally.
       top =
         let
@@ -98,10 +91,7 @@
           hometop = genAttrs
             (builtins.attrNames inputs.self.homeManagerConfigurations)
             (attr: inputs.self.homeManagerConfigurations.${attr}.activationPackage);
-          darwintop = genAttrs
-            (builtins.attrNames inputs.self.darwinConfigurations)
-            (attr: inputs.self.darwinConfigurations.${attr}.system);
         in
-        nixtop // hometop // darwintop;
+        nixtop // hometop;
     };
 }
