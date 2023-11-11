@@ -1,4 +1,4 @@
-{ pkgs, modulesPath, ... }:
+{ pkgs, modulesPath, lib, ... }:
 
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
@@ -63,7 +63,7 @@
 
   swapDevices = [ ];
 
-  networking.useDHCP = lib.mkDefault true;
+  #networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 
 
