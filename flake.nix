@@ -19,19 +19,19 @@
     neovim-flake.url = "github:neovim/neovim?dir=contrib";
     neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
 
-    nushell-src.url = "github:nushell/nushell";
-    nushell-src.flake = false;
+    # nushell-src.url = "github:nushell/nushell";
+    # nushell-src.flake = false;
 
     # eww.url = "github:elkowar/eww";
   };
 
   nixConfig = {
     extra-substituters = [
-      "https://edeneast.cachix.org"
+    #  "https://edeneast.cachix.org"
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "edeneast.cachix.org-1:a4tKrKZgZXXXYhDytg/Z3YcjJ04oz5ormt0Ow6OpExc="
+    #  "edeneast.cachix.org-1:a4tKrKZgZXXXYhDytg/Z3YcjJ04oz5ormt0Ow6OpExc="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
@@ -39,7 +39,7 @@
   outputs = { self, ... }@inputs:
     with self.lib;
     let
-      systems = [ "x86_64-linux" "x86_64-darwin" ];
+      systems = [ "x86_64-linux"  ];
       foreachSystem = genAttrs systems;
       pkgsBySystem = foreachSystem (
         system:
@@ -79,6 +79,7 @@
         pride = { };
         sloth = { };
         vm-dev = { };
+        legoshi = { };
       };
 
       # Convenience output that aggregates the outputs for home and nixos configurations.
