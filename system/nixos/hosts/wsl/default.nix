@@ -2,7 +2,7 @@
 
 with lib;
 let
-  username = "eden";
+  username = "elijahdl";
   syschdemd = import ./syschdemd.nix { inherit lib pkgs config username; };
 in
 {

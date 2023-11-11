@@ -67,7 +67,7 @@ rec {
     };
 
   # Top level derivation for just home-manager
-  mkHome = name: { config ? name, user ? "eden", system ? "x86_64-linux" }:
+  mkHome = name: { config ? name, user ? "elijahdl", system ? "x86_64-linux" }:
     let
       pkgs = inputs.self.legacyPackages."${system}";
       userConf = import (strToFile user ../user);
@@ -118,7 +118,7 @@ rec {
       }
     );
 
-  mkSystem = name: { config ? name, user ? "eden", system ? "x86_64-linux" }:
+  mkSystem = name: { config ? name, user ? "elijahdl", system ? "x86_64-linux" }:
     nameValuePair name (
       let
         pkgs = inputs.self.legacyPackages."${system}";
@@ -199,7 +199,7 @@ rec {
       }
     );
 
-  mkDarwin = name: { config ? name, user ? "eden" }:
+  mkDarwin = name: { config ? name, user ? "elijahdl" }:
     nameValuePair name (
       let
         system = "x86_64-darwin";
