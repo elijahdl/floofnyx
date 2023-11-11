@@ -54,7 +54,7 @@ in
       curl
       git
       pciutils
-      vim
+      neovim
     ];
   };
 }
