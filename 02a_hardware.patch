@@ -1,0 +1,22 @@
+--- system/nixos/hosts/legoshi/hardware.nix	2023-11-12 01:01:47.682340269 +0000
++++ system/nixos/hosts/legoshi/hardware-new.nix	2023-11-12 01:04:35.493624269 +0000
+@@ -15,2 +15,7 @@
+ 
++  boot.loader = {
++      systemd-boot.enable = true;
++      efi.canTouchEfiVariables = true;
++  };
++
+   fileSystems."/" =
+@@ -45,2 +50,3 @@
+       options = [ "subvol=log" ];
++      neededForBoot = true;
+     };
+@@ -51,2 +57,3 @@
+       options = [ "subvol=swap" ];
++      neededForBoot = true;
+     };
+@@ -58,3 +65,3 @@
+ 
+-  swapDevices = [ ];
++  swapDevices = [ { device = "/swap/swapfile"; }];
